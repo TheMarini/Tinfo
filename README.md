@@ -15,5 +15,5 @@ Add resumo do projeto.
 * Mateus Gomes ([github]())
 * Bruno Marini ([github]())
 * Victor Seara ([github]())
-* Cristiano Coelho ([github]())
-* Bruno ([github]())
+* Cristiano Coelho ([coelhojs](https://github.com/coelhojs))
+* Bruno Armanelli ([github]())
