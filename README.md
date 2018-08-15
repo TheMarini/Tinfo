@@ -12,8 +12,8 @@ Add resumo do projeto.
 * Add dependências.
 
 ### Autores:
-* Mateus Gomes ([github]())
-* Bruno Marini ([github]())
-* Victor Seara ([github]())
-* Cristiano Coelho ([coelhojs](https://github.com/coelhojs))
 * Bruno Armanelli ([github]())
+* Bruno Marini ([github]())
+* Cristiano Coelho ([coelhojs](https://github.com/coelhojs))
+* Mateus Gomes ([github]())
+* Victor Seara ([github]())
