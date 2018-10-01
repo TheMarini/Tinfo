@@ -1,10 +1,15 @@
 import java.time.LocalDate;
 
 public class IC {
-	int ID;
-	String nome, description;
-	String[] tipo = {"servico", "hardware", "software", "documentacao", "pessoal"};
-	boolean status;
-	LocalDate dataFornecimento;
-	DadosHistoricos dadosHistoricos;
+	private int ID;
+	private String nome, description;
+	private String[] tipo = { "servico", "hardware", "software", "documentacao", "equipe" };
+	private boolean status;
+	private LocalDate dataFornecimento;
+	private DadosHistoricos dadosHistoricos;
+	private Ativo ativo;
+
+	public IC() {
+
+	}
 }

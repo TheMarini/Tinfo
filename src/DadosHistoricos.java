@@ -1,6 +1,6 @@
 
 public class DadosHistoricos {
-	DadosHistoricos(){
-		
+	public DadosHistoricos() {
+
 	}
 }
