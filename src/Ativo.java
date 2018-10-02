@@ -7,8 +7,8 @@ public class Ativo {
 	private LocalDate dataAquisicao, prazoGarantia;
 	private String usuarioDesignado;
 	private String[] departamento;
-	
-	public Ativo(){
-		
+
+	public Ativo() {
+
 	}
 }
