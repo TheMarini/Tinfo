@@ -1,17 +1,25 @@
 import java.time.LocalDate;
 
-public class IC {
+public class IC extends Ativo {
 	private int ID;
-	private String nome, description;
-	//private String[] tipo = { "servico", "hardware", "software", "documentacao", "equipe" };
-	private boolean status;
+	private LocalDate dataFornecimento, dataGarantia;
+	private Tipo[] tipo;
 	private Usuario[] usuarioDesignado;
 	private Departamento[] departamento;
-	private LocalDate dataFornecimento, dataGarantia;
+	private boolean status;
 	private DadosHistoricos dadosHistoricos;
-	private Ativo ativo;
 
-	public IC() {
-
+	public IC(String nome, String descricao, LocalDate dataAquisicao, int quantidade, double preco, int iD,
+			LocalDate dataFornecimento, LocalDate dataGarantia, Tipo[] tipo, Usuario[] usuarioDesignado,
+			Departamento[] departamento, boolean status, DadosHistoricos dadosHistoricos) {
+		super(nome, descricao, dataAquisicao, quantidade, preco);
+		ID = iD;
+		this.dataFornecimento = dataFornecimento;
+		this.dataGarantia = dataGarantia;
+		this.tipo = tipo;
+		this.usuarioDesignado = usuarioDesignado;
+		this.departamento = departamento;
+		this.status = status;
+		this.dadosHistoricos = dadosHistoricos;
 	}
 }
