@@ -1,8 +1,8 @@
 
 public class Departamento {
 	private String nome;
-	private String[] equipamentos, softwares;
 	private Usuario[] usuarios;
+	// private String[] equipamentos, softwares;
 
 	public Departamento() {
 
