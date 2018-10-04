@@ -1,8 +1,7 @@
-import java.time.LocalDate;
+public class Inventario {
 
-public class Inventario extends Ativo {
+	private int quantidade;
 
-	public Inventario(String nome, String descricao, LocalDate dataAquisicao, int quantidade, double preco) {
-		super(nome, descricao, dataAquisicao, quantidade, preco);
+	public Inventario() {
 	}
 }
