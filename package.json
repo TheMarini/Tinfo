@@ -1,0 +1,13 @@
+{
+  "name": "Tinfo",
+  "version": "0.1.0",
+  "description": "Trabalho Interdisciplinar de Software 2 (TIS-2)",
+  "main": "index.js",
+  "repository": "git@github.com:TheMarini/Tinfo.git",
+  "author": "Bruno Marini <bruno.marini1@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "bootstrap": "^4.1.3",
+    "jquery": "^3.3.1"
+  }
+}
