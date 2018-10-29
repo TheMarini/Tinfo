@@ -1,0 +1,110 @@
+/* --- Header --- */
+main>header h1 {
+  color: white;
+  /* border-left: 6px solid dimgray;
+  border-right: 6px solid dimgray; */
+  background-color: cadetblue;
+  border-radius: 10px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+}
+
+main > header .title {
+  color: #231f20;
+  background-color: white;
+  width: 8.5%;
+}
+
+main > header .legenda p:not(.title) {
+  color: gray;
+}
+
+main>header .legenda p span {
+  color: orange
+}
+
+/* --- Nota --- */
+.nota header {
+  font-size: 3vh;
+  color: dimgray;
+}
+
+/* --- Table --- */
+table {
+  border-radius: 10px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+}
+
+table th, table td {
+  padding: 20px !important
+}
+
+/* thead */
+table thead {
+  background-color: dimgray;
+  border-radius: 10px
+}
+
+table th {
+  color: white;
+  border: none !important;
+}
+
+table th:first-child {
+  border-top-left-radius: 10px
+}
+
+table th:last-child {
+  border-top-right-radius: 10px
+}
+
+/* tbody */
+table tbody {
+  background-color: white;
+}
+
+table tbody tr {
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+table tbody tr:nth-of-type(even)::after {
+  content: '*';
+  position: absolute;
+  color: orange;
+  padding: 10px;
+  margin-left: 5px;
+  margin-top: 8px;
+  display: flex;
+  font-size: 4vh;
+}
+
+table tbody tr:nth-of-type(even):hover {
+  background-color: orange;
+}
+
+table tbody tr:hover {
+  background-color: cadetblue;
+  color: white
+}
+
+table tbody tr:last-child td:first-child {
+  border-bottom-left-radius: 10px
+}
+
+table tbody tr:last-child td:last-child {
+  border-bottom-right-radius: 10px
+}
+
+table tbody tr:first-child td {
+  border-top: none !important
+}
+
+table td {
+  vertical-align: middle;
+}
+
+/* --- FOOTER --- */
+footer {
+  height: 8px;
+  background-color: cadetblue;
+}

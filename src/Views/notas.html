@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-bt">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <title>TInfo</title>
+
+  <!-- TODO: .ico & favicon size -->
+  <link rel="icon" href="assets/img/green-chipset.png" />
+
+  <!-- STYLES -->
+  <link rel="stylesheet" href="assets/css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <link rel="stylesheet" href="assets/css/notas.css">
+</head>
+
+<body onload="consultarNotas()">
+
+  <main class="container py-4">
+    <header class="mb-4">
+      <h1 class="text-center px-3 py-3 mb-4">Notas Fiscais</h1>
+      <div class="legenda">
+        <p class="my-0 title px-3 py-1 mb-1">Legenda</p>
+        <p class="my-0"><span>*</span> sem especificação técnica</p>
+      </div>
+      <hr>
+    </header>
+
+    <article>
+      <div class="nota mb-5">
+        <header class="mb-2 text-center d-flex justify-content-between">
+          <div class="number">
+            <p class="my-0">Nº <span id="NF-ID"></span></p>
+          </div>
+          <div class="date">
+            <p class="my-0">Emitida em <span id="NF-data"></span></p>
+          </div>
+        </header>
+        <table class="table text-center">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Descrição do Item</th>
+              <th scope="col">Valor Unit.</th>
+              <th scope="col">Quantidade</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr data-href="step-technical.html">
+              <td>1</td>
+              <td id="NF-descricao"></td>
+              <td id="NF-valorUnit"></td>
+              <td id="NF-quant"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="nota mb-5">
+        <header class="mb-2 text-center d-flex justify-content-between">
+          <div class="number">
+            <p class="my-0">Nº <span>198.742.489</span></p>
+          </div>
+          <div class="date">
+            <p class="my-0">Emitida em <span>01/09/2018</span></p>
+          </div>
+        </header>
+        <table class="table text-center">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Descrição do Item</th>
+              <th scope="col">Valor Unit.</th>
+              <th scope="col">Quantidade</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr data-href="step-technical.html">
+              <td>1</td>
+              <td>Computador</td>
+              <td>R$3.605</td>
+              <td>6</td>
+            </tr>
+            <tr data-href="step-technical.html">
+              <td>2</td>
+              <td>Notebook</td>
+              <td>R$2.580</td>
+              <td>3</td>
+            </tr>
+            <tr data-href="step-technical.html">
+              <td>3</td>
+              <td>Modem</td>
+              <td>R$126</td>
+              <td>8</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="nota">
+        <header class="mb-2 text-center d-flex justify-content-between">
+          <div class="number">
+            <p class="my-0">Nº <span>198.742.489</span></p>
+          </div>
+          <div class="date">
+            <p class="my-0">Emitida em <span>01/09/2018</span></p>
+          </div>
+        </header>
+        <table class="table text-center">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Descrição do Item</th>
+              <th scope="col">Valor Unit.</th>
+              <th scope="col">Quantidade</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr data-href="step-technical.html">
+              <td>1</td>
+              <td>Computador</td>
+              <td>R$3.605</td>
+              <td>6</td>
+            </tr>
+            <tr data-href="step-technical.html">
+              <td>2</td>
+              <td>Notebook</td>
+              <td>R$2.580</td>
+              <td>3</td>
+            </tr>
+            <tr data-href="step-technical.html">
+              <td>3</td>
+              <td>Modem</td>
+              <td>R$126</td>
+              <td>8</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </article>
+  </main>
+
+  <footer></footer>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="assets/js/script.js"></script>
+</body>
+
+</html>
