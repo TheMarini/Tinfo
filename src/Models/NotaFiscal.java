@@ -21,6 +21,10 @@ public class NotaFiscal implements JsonFormatter {
 		this.descricao = descricao;
 	}
 
+	public NotaFiscal() {
+
+	}
+
 	@Override
 	public String toString() {
 		return "Nota Fiscal: " + this.nf + " - Valor unitario: " + this.valorUnit + " - Quantidade: " + this.quantidade
