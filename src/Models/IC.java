@@ -7,8 +7,15 @@ import org.json.JSONObject;
 public abstract class IC {
 //	static NotaFiscal nf;
 
+	// informações da compra
 	private String nf;
 	private LocalDate dataFornecimento;
+	//
+
+	// detalhes do item
+	// nome do item, marca, modelo,
+
+	//
 	private String status;
 	// private Usuario[] usuarioDesignado;
 	private String usuarioDesignado;
@@ -20,6 +27,9 @@ public abstract class IC {
 		this.dataFornecimento = dataFornecimento;
 		this.status = status;
 		this.usuarioDesignado = usuarioDesignado;
+	}
+
+	public IC() {
 	}
 
 	@Override

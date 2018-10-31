@@ -1,5 +1,7 @@
 package Controllers;
 
+import java.awt.List;
+import java.io.File;
 import java.io.PrintStream;
 import java.net.InetSocketAddress;
 import java.net.SocketAddress;
@@ -13,6 +15,8 @@ import org.simpleframework.http.core.Container;
 import org.simpleframework.http.core.ContainerSocketProcessor;
 import org.simpleframework.transport.connect.Connection;
 import org.simpleframework.transport.connect.SocketConnection;
+
+import Models.NotaFiscal;
 
 public class Server implements Container {
 
@@ -92,6 +96,18 @@ public class Server implements Container {
 		Connection conexao = new SocketConnection(servidor);
 		SocketAddress endereco = new InetSocketAddress(porta);
 		conexao.connect(endereco);
+		
+		File f = new File("notasfiscais.txt");
+		if (f.exists())
+			f.delete();
+
+		List<NotaFiscal> notasFiscais = NotaFiscalDAO.getAll();
+
+		for (NotaFiscal nf : notasFiscais) {
+			System.out.println(nf);
+		}
+
+		
 		System.out.println(
 				"Tecle ENTER para interromper o servidor...\nAbra o html da página no navegador para verificar o funcionamento do servidor ");
 		System.in.read();
