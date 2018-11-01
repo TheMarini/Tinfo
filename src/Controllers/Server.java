@@ -1,10 +1,12 @@
 package Controllers;
 
-import java.awt.List;
 import java.io.File;
 import java.io.PrintStream;
 import java.net.InetSocketAddress;
 import java.net.SocketAddress;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -96,18 +98,23 @@ public class Server implements Container {
 		Connection conexao = new SocketConnection(servidor);
 		SocketAddress endereco = new InetSocketAddress(porta);
 		conexao.connect(endereco);
-		
+
 		File f = new File("notasfiscais.txt");
 		if (f.exists())
 			f.delete();
 
-		List<NotaFiscal> notasFiscais = NotaFiscalDAO.getAll();
+		NotaFiscal notaFiscal1 = new NotaFiscal("1550", 10.01, 5, LocalDate.of(2018, 9, 02), "computador");
+		List<NotaFiscal> notasFiscais = new ArrayList<NotaFiscal>();
+		notasFiscais.add(notaFiscal1);
+
+		NotaFiscalDAO nfDAO = new NotaFiscalDAO();
+
+		notasFiscais = nfDAO.getAll();
 
 		for (NotaFiscal nf : notasFiscais) {
 			System.out.println(nf);
 		}
 
-		
 		System.out.println(
 				"Tecle ENTER para interromper o servidor...\nAbra o html da página no navegador para verificar o funcionamento do servidor ");
 		System.in.read();
