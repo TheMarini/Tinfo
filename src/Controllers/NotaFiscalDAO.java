@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Models.NotaFiscal;
+import java.io.PrintStream;
 
 public class NotaFiscalDAO implements DAO<NotaFiscal, String> {
 	public NotaFiscalDAO() {
@@ -37,7 +38,8 @@ public class NotaFiscalDAO implements DAO<NotaFiscal, String> {
 	public NotaFiscal get(String chave) {
 		NotaFiscal retorno = null;
 		NotaFiscal nf = null;
-
+		
+		
 		try (BufferedReader buffer_entrada = new BufferedReader(new FileReader("notasfiscais.txt"))) {
 			String idSTR;
 
