@@ -62,41 +62,28 @@ public class NotaFiscalDAO implements DAO<NotaFiscal, String> {
 		}
 		return retorno;
 	}
-
-	@Override
-	public void delete(String chave) {
-		NotaFiscal nf = get(chave);
-		System.out.println(nf);
-
-		try (BufferedReader buffer_entrada = new BufferedReader(new FileReader("notasfiscais.txt"))) {
-			String idSTR;
-
-			while ((idSTR = buffer_entrada.readLine()) != null) {
-				nf = new NotaFiscal();
-				nf.setNfID(idSTR);
-				nf.setValorUnit(Double.parseDouble(buffer_entrada.readLine()));
-				nf.setQuantidade(Integer.parseInt(buffer_entrada.readLine()));
-				nf.setDataEmissaoNF(LocalDate.parse(buffer_entrada.readLine()));
-				nf.setDescricao(buffer_entrada.readLine());
-
-				if (chave.equals(nf.getNfID())) {
-					System.out.println(nf);
-					List<NotaFiscal> notasFiscais = getAll();
-					int index = notasFiscais.indexOf(nf);
-					System.out.println(notasFiscais.indexOf(nf));
-					System.out.println(index);
-					System.out.println(notasFiscais.get(index));
-					//notasFiscais.remove(nf.);
-					saveToFile(notasFiscais);
-					break;
-				}
-			}
-		} catch (Exception e) {
-			System.out.println("Nota Fiscal nao encontrada no disco rigido!");
-			e.printStackTrace();
-		}
-
-	}
+	/*
+	 * public void remove(String chave) { NotaFiscal nf = get(chave);
+	 * System.out.println(nf);
+	 * 
+	 * try (BufferedReader buffer_entrada = new BufferedReader(new
+	 * FileReader("notasfiscais.txt"))) { String idSTR;
+	 * 
+	 * while ((idSTR = buffer_entrada.readLine()) != null) { nf = new NotaFiscal();
+	 * nf.setNfID(idSTR);
+	 * nf.setValorUnit(Double.parseDouble(buffer_entrada.readLine()));
+	 * nf.setQuantidade(Integer.parseInt(buffer_entrada.readLine()));
+	 * nf.setDataEmissaoNF(LocalDate.parse(buffer_entrada.readLine()));
+	 * nf.setDescricao(buffer_entrada.readLine());
+	 * 
+	 * if (chave.equals(nf.getNfID())) { List<NotaFiscal> notasFiscais = getAll();
+	 * int index = notasFiscais.indexOf(nf); notasFiscais.remove(index);
+	 * saveToFile(notasFiscais); break; } } } catch (Exception e) {
+	 * System.out.println("Nota Fiscal nao encontrada no disco rigido!");
+	 * e.printStackTrace(); }
+	 * 
+	 * }
+	 */
 
 	@Override
 	public List<NotaFiscal> getAll() {
@@ -131,13 +118,15 @@ public class NotaFiscalDAO implements DAO<NotaFiscal, String> {
 		saveToFile(notasFiscais);
 	}
 
-	/*
-	 * @Override public void delete(String chave) { NotaFiscal nf = get(chave);
-	 * System.out.println(nf); List<NotaFiscal> notasFiscais = getAll();
-	 * System.out.println(notasFiscais); int index = notasFiscais.indexOf(nf);
-	 * System.out.println(index); if (index != -1) { notasFiscais.remove(index); }
-	 * saveToFile(notasFiscais); }
-	 */
+	@Override
+	public void delete(NotaFiscal nf) {
+		List<NotaFiscal> notasFiscais = getAll();
+		int index = notasFiscais.indexOf(nf);
+		if (index != -1) {
+			notasFiscais.remove(index);
+			saveToFile(notasFiscais);
+		}
+	}
 
 	private void saveToFile(List<NotaFiscal> notasFiscais) {
 		try (BufferedWriter buffer_saida = new BufferedWriter(new FileWriter("notasfiscais.txt", false))) {

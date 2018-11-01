@@ -1,13 +1,11 @@
 package Controllers;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.net.InetSocketAddress;
 import java.net.SocketAddress;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.json.JSONException;
@@ -90,8 +88,6 @@ public class Server implements Container {
 
 	public static void main(String args[]) throws Exception {
 
-		File f = new File("notasfiscais.txt");
-
 		listaNF = new Service();
 		listaIC = new Service();
 
@@ -173,7 +169,17 @@ public class Server implements Container {
 				// Remove nota
 				System.out.println("Informe o numero da Nota Fiscal: ");
 				numNF = br.readLine();
-				nfDAO.delete(numNF);
+				System.out.println("Informe o valor unitario dos itens: ");
+				valorUnit = Double.parseDouble(br.readLine());
+				System.out.println("Informe a quantidade de itens: ");
+				quantidade = Integer.parseInt(br.readLine());
+				System.out.println("Informe a data de Emissao da NF (AAAA-MM-DD)");
+				dataEmissaoNF = LocalDate.parse(br.readLine());
+				System.out.println("Informe a descricao: ");
+				descricao = br.readLine();
+				novaNF = new NotaFiscal(numNF, valorUnit, quantidade, dataEmissaoNF, descricao);
+
+				nfDAO.delete(novaNF);
 
 				break;
 			case 5:
