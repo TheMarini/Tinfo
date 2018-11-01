@@ -104,12 +104,17 @@ public class Server implements Container {
 			f.delete();
 
 		NotaFiscal notaFiscal1 = new NotaFiscal("1550", 10.01, 5, LocalDate.of(2018, 9, 02), "computador");
+
 		List<NotaFiscal> notasFiscais = new ArrayList<NotaFiscal>();
-		notasFiscais.add(notaFiscal1);
 
 		NotaFiscalDAO nfDAO = new NotaFiscalDAO();
 		nfDAO.add(notaFiscal1);
 
+		// MÉTODOS PARA IMPLEMENTAR:
+		// Atualiza nota
+		// Remove nota
+		// Salva nota pelo numero
+		// Salva todas as notas
 		notasFiscais = nfDAO.getAll();
 
 		for (NotaFiscal nf : notasFiscais) {
