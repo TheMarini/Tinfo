@@ -1,15 +1,14 @@
 package Models;
 
-import java.time.LocalDate;
-
 import org.json.JSONObject;
 
 public abstract class IC {
 //	static NotaFiscal nf;
 
 	// informações da compra
+	private String id;
 	private String nf;
-	private LocalDate dataFornecimento;
+	private String dataFornecimento;
 	//
 
 	// detalhes do item
@@ -22,9 +21,10 @@ public abstract class IC {
 	// private Departamento[] departamento;
 	// private DadosHistoricos dadosHistoricos;
 
-	public IC(String nf, LocalDate dataFornecimento, String status, String usuarioDesignado) {
+	public IC(String id, String nf, String dataFornecimento2, String status, String usuarioDesignado) {
+		this.id = id;
 		this.nf = nf;
-		this.dataFornecimento = dataFornecimento;
+		this.dataFornecimento = dataFornecimento2;
 		this.status = status;
 		this.usuarioDesignado = usuarioDesignado;
 	}
@@ -34,8 +34,8 @@ public abstract class IC {
 
 	@Override
 	public String toString() {
-		return "Nota Fiscal: " + this.nf + " - Data de fornecimento: " + this.dataFornecimento + " - Status do item: "
-				+ this.status + " - Usuario designado: " + this.usuarioDesignado;
+		return "ID: " + this.id + " - Nota Fiscal: " + this.nf + " - Data de fornecimento: " + this.dataFornecimento
+				+ " - Status do item: " + this.status + " - Usuario designado: " + this.usuarioDesignado;
 	}
 
 	/**
@@ -43,6 +43,7 @@ public abstract class IC {
 	 */
 	public JSONObject toJson() {
 		JSONObject obj = new JSONObject();
+		obj.put("id", this.getId());
 		obj.put("nf", this.getNf());
 		obj.put("dataFornecimento", this.getDataFornecimento());
 		obj.put("status", this.getStatus());
@@ -50,11 +51,15 @@ public abstract class IC {
 		return obj;
 	}
 
+	public String getId() {
+		return id;
+	}
+
 	public String getNf() {
 		return nf;
 	}
 
-	public LocalDate getDataFornecimento() {
+	public String getDataFornecimento() {
 		return dataFornecimento;
 	}
 
@@ -66,11 +71,15 @@ public abstract class IC {
 		return usuarioDesignado;
 	}
 
+	public void setId(String id) {
+		this.id = id;
+	}
+
 	public void setNf(String nf) {
 		this.nf = nf;
 	}
 
-	public void setDataFornecimento(LocalDate dataFornecimento) {
+	public void setDataFornecimento(String dataFornecimento) {
 		this.dataFornecimento = dataFornecimento;
 	}
 

@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,7 +47,7 @@ public class ComputadorDAO implements DAO<Computador, String> {
 				computador = new Computador();
 				computador.setId(idSTR);
 				computador.setNf(buffer_entrada.readLine());
-				computador.setDataFornecimento(LocalDate.parse(buffer_entrada.readLine()));
+				computador.setDataFornecimento(buffer_entrada.readLine());
 				computador.setStatus(buffer_entrada.readLine());
 				computador.setUsuarioDesignado(buffer_entrada.readLine());
 
@@ -75,7 +74,7 @@ public class ComputadorDAO implements DAO<Computador, String> {
 				computador = new Computador();
 				computador.setId(idSTR);
 				computador.setNf(buffer_entrada.readLine());
-				computador.setDataFornecimento(LocalDate.parse(buffer_entrada.readLine()));
+				computador.setDataFornecimento(buffer_entrada.readLine());
 				computador.setStatus(buffer_entrada.readLine());
 				computador.setUsuarioDesignado(buffer_entrada.readLine());
 				computadores.add(computador);
@@ -84,6 +83,7 @@ public class ComputadorDAO implements DAO<Computador, String> {
 			System.out.println("ERRO ao ler os Computadores do disco rígido!");
 			e.printStackTrace();
 		}
+
 		return computadores;
 	}
 
@@ -114,6 +114,7 @@ public class ComputadorDAO implements DAO<Computador, String> {
 			for (Computador b : computadores) {
 				buffer_saida.write(b.getId() + separadorDeLinha);
 				buffer_saida.write(b.getNf() + separadorDeLinha);
+				buffer_saida.write(b.getDataFornecimento() + separadorDeLinha);
 				buffer_saida.write(b.getStatus() + separadorDeLinha);
 				buffer_saida.write(b.getUsuarioDesignado() + separadorDeLinha);
 				buffer_saida.flush();

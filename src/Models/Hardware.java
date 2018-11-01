@@ -1,11 +1,9 @@
 package Models;
 
-import java.time.LocalDate;
-
 public class Hardware extends IC {
 
-	public Hardware(String nf, LocalDate dataFornecimento, String status, String usuarioDesignado) {
-		super(nf, dataFornecimento, status, usuarioDesignado);
+	public Hardware(String id, String nf, String dataFornecimento, String status, String usuarioDesignado) {
+		super(id, nf, dataFornecimento, status, usuarioDesignado);
 
 	}
 

@@ -57,7 +57,7 @@ public final class Service {
 		String id = query.get("id");
 		String nf = query.get("nf");
 		String status = query.get("status");
-		LocalDate dataFornecimento = LocalDate.parse(query.get("dataFornecimento"), formatter);
+		String dataFornecimento = query.get("dataFornecimento");
 		String usuarioDesignado = query.get("usuarioDesignado");
 		int tipo = query.getInteger("tipo");
 
@@ -68,13 +68,13 @@ public final class Service {
 
 			break;
 		case 1:
-			ic = new Hardware(nf, dataFornecimento, status, usuarioDesignado);
+			ic = new Hardware(id, nf, dataFornecimento, status, usuarioDesignado);
 			break;
 		case 2:
-			ic = new Servico(nf, dataFornecimento, status, usuarioDesignado);
+			ic = new Servico(id, nf, dataFornecimento, status, usuarioDesignado);
 			break;
 		case 3:
-			ic = new Software(nf, dataFornecimento, status, usuarioDesignado);
+			ic = new Software(id, nf, dataFornecimento, status, usuarioDesignado);
 			break;
 		}
 

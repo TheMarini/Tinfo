@@ -25,6 +25,7 @@ public class NotaFiscalDAO implements DAO<NotaFiscal, String> {
 			buffer_saida.write(b.getQuantidade() + separadorDeLinha);
 			buffer_saida.write(b.getDataEmissaoNF() + separadorDeLinha);
 			buffer_saida.write(b.getDescricao() + separadorDeLinha);
+			
 			buffer_saida.flush();
 
 		} catch (Exception e) {
