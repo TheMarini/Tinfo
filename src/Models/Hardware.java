@@ -9,4 +9,8 @@ public class Hardware extends IC {
 
 	}
 
+	public Hardware() {
+		super();
+	}
+
 }

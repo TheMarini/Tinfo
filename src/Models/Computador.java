@@ -3,10 +3,23 @@ package Models;
 import java.time.LocalDate;
 
 public class Computador extends Hardware {
+	private String id;
 
-	public Computador(int id, String nf, LocalDate dataFornecimento, String status, String usuarioDesignado) {
+	public Computador(String id, String nf, LocalDate dataFornecimento, String status, String usuarioDesignado) {
 		super(nf, dataFornecimento, status, usuarioDesignado);
-		// TODO Auto-generated constructor stub
+		this.id = id;
+	}
+
+	public Computador() {
+		super();
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 
 }

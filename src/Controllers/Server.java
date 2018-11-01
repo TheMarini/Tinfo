@@ -18,6 +18,7 @@ import org.simpleframework.http.core.ContainerSocketProcessor;
 import org.simpleframework.transport.connect.Connection;
 import org.simpleframework.transport.connect.SocketConnection;
 
+import Models.Computador;
 import Models.NotaFiscal;
 
 public class Server implements Container {
@@ -99,113 +100,239 @@ public class Server implements Container {
 		SocketAddress endereco = new InetSocketAddress(porta);
 		conexao.connect(endereco);
 
-		NotaFiscalDAO nfDAO = new NotaFiscalDAO();
-		nfDAO.add(new NotaFiscal("1", 10.01, 5, LocalDate.of(2018, 9, 02), "computador"));
-		nfDAO.add(new NotaFiscal("2", 10.02, 5, LocalDate.of(2018, 9, 02), "computador"));
-		nfDAO.add(new NotaFiscal("3", 10.03, 5, LocalDate.of(2018, 9, 02), "computador"));
-		nfDAO.add(new NotaFiscal("4", 10.04, 5, LocalDate.of(2018, 9, 02), "computador"));
-
-		List<NotaFiscal> notasFiscais;
-
+		System.out.println("Tinfo - Controle de Itens de Configuracao");
 		int opcao = 9;
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
 		System.out.println("Cadastro de Notas Fiscais");
 		System.out.println("Selecione uma opcao:");
-		System.out.println("1-Buscar uma Nota Fiscal");
-		System.out.println("2-Cadastrar uma Nota Fiscal");
-		System.out.println("3-Atualizar uma Nota Fiscal");
-		System.out.println("4-Remover uma Nota Fiscal");
-		System.out.println("5-Listar Notas Fiscais");
+		System.out.println("1-Notas Fiscais");
+		System.out.println("2-Computadores");
 		System.out.println("0-SAIR");
 
 		opcao = Integer.parseInt(br.readLine());
 		while (opcao != 0) {
-			// MÉTODOS PARA IMPLEMENTAR:
 			switch (opcao) {
-
 			case 1:
-				// Buscar nota
-				System.out.println("Informe o numero da Nota Fiscal: ");
-				String numNF = br.readLine();
-				System.out.println(nfDAO.get(numNF));
 
+				NotaFiscalDAO nfDAO = new NotaFiscalDAO();
+				nfDAO.add(new NotaFiscal("1", 10.01, 5, LocalDate.of(2018, 9, 02), "computador"));
+				nfDAO.add(new NotaFiscal("2", 10.02, 5, LocalDate.of(2018, 9, 02), "computador"));
+				nfDAO.add(new NotaFiscal("3", 10.03, 5, LocalDate.of(2018, 9, 02), "computador"));
+				nfDAO.add(new NotaFiscal("4", 10.04, 5, LocalDate.of(2018, 9, 02), "computador"));
+
+				List<NotaFiscal> notasFiscais;
+
+				int opcao1 = 9;
+				br = new BufferedReader(new InputStreamReader(System.in));
+
+				System.out.println("Cadastro de Notas Fiscais");
+				System.out.println("Selecione uma opcao:");
+				System.out.println("1-Buscar uma Nota Fiscal");
+				System.out.println("2-Cadastrar uma Nota Fiscal");
+				System.out.println("3-Atualizar uma Nota Fiscal");
+				System.out.println("4-Remover uma Nota Fiscal");
+				System.out.println("5-Listar Notas Fiscais");
+				System.out.println("0-SAIR");
+
+				opcao1 = Integer.parseInt(br.readLine());
+				while (opcao1 != 0) {
+					// MÉTODOS PARA IMPLEMENTAR:
+					switch (opcao1) {
+
+					case 1:
+						// Buscar nota
+						System.out.println("Informe o numero da Nota Fiscal: ");
+						String numNF = br.readLine();
+						System.out.println(nfDAO.get(numNF));
+
+						break;
+					case 2:
+						// Salva nota fiscal
+						System.out.println("Informe o numero da Nota Fiscal: ");
+						numNF = br.readLine();
+						System.out.println("Informe o valor unitario dos itens: ");
+						double valorUnit = Double.parseDouble(br.readLine());
+						System.out.println("Informe a quantidade de itens: ");
+						int quantidade = Integer.parseInt(br.readLine());
+						System.out.println("Informe a data de Emissao da NF (AAAA-MM-DD)");
+						LocalDate dataEmissaoNF = LocalDate.parse(br.readLine());
+						System.out.println("Informe a descricao: ");
+						String descricao = br.readLine();
+						NotaFiscal novaNF = new NotaFiscal(numNF, valorUnit, quantidade, dataEmissaoNF, descricao);
+
+						nfDAO.add(novaNF);
+
+						break;
+					case 3:
+						// Atualiza nota
+						System.out.println("Informe o numero da Nota Fiscal: ");
+						numNF = br.readLine();
+						System.out.println("Informe o valor unitario dos itens: ");
+						valorUnit = Double.parseDouble(br.readLine());
+						System.out.println("Informe a quantidade de itens: ");
+						quantidade = Integer.parseInt(br.readLine());
+						System.out.println("Informe a data de Emissao da NF (AAAA-MM-DD)");
+						dataEmissaoNF = LocalDate.parse(br.readLine());
+						System.out.println("Informe a descricao: ");
+						descricao = br.readLine();
+						novaNF = new NotaFiscal(numNF, valorUnit, quantidade, dataEmissaoNF, descricao);
+
+						nfDAO.update(novaNF);
+
+						break;
+					case 4:
+						// Remove nota
+						System.out.println("Informe o numero da Nota Fiscal: ");
+						numNF = br.readLine();
+						System.out.println("Informe o valor unitario dos itens: ");
+						valorUnit = Double.parseDouble(br.readLine());
+						System.out.println("Informe a quantidade de itens: ");
+						quantidade = Integer.parseInt(br.readLine());
+						System.out.println("Informe a data de Emissao da NF (AAAA-MM-DD)");
+						dataEmissaoNF = LocalDate.parse(br.readLine());
+						System.out.println("Informe a descricao: ");
+						descricao = br.readLine();
+						novaNF = new NotaFiscal(numNF, valorUnit, quantidade, dataEmissaoNF, descricao);
+
+						nfDAO.delete(novaNF);
+
+						break;
+					case 5:
+						// Buscar lista de notas
+						// Receber Notas Fiscais do txt e exibir como String:
+						notasFiscais = nfDAO.getAll();
+						for (NotaFiscal nf : notasFiscais) {
+							System.out.println(nf);
+						}
+						break;
+					default:
+						System.out.println("Opcao invalida");
+						break;
+					}
+
+					System.out.println("Cadastro de Notas Fiscais");
+					System.out.println("Selecione uma opcao:");
+					System.out.println("1-Buscar uma Nota Fiscal");
+					System.out.println("2-Cadastrar uma Nota Fiscal");
+					System.out.println("3-Atualizar uma Nota Fiscal");
+					System.out.println("4-Remover uma Nota Fiscal");
+					System.out.println("5-Listar Notas Fiscais");
+					System.out.println("0-SAIR");
+
+					opcao1 = Integer.parseInt(br.readLine());
+
+				}
 				break;
 			case 2:
-				// Salva nota fiscal
-				System.out.println("Informe o numero da Nota Fiscal: ");
-				numNF = br.readLine();
-				System.out.println("Informe o valor unitario dos itens: ");
-				double valorUnit = Double.parseDouble(br.readLine());
-				System.out.println("Informe a quantidade de itens: ");
-				int quantidade = Integer.parseInt(br.readLine());
-				System.out.println("Informe a data de Emissao da NF (AAAA-MM-DD)");
-				LocalDate dataEmissaoNF = LocalDate.parse(br.readLine());
-				System.out.println("Informe a descricao: ");
-				String descricao = br.readLine();
-				NotaFiscal novaNF = new NotaFiscal(numNF, valorUnit, quantidade, dataEmissaoNF, descricao);
+				ComputadorDAO computadorDAO = new ComputadorDAO();
+				computadorDAO.add(new Computador("1", "999854", LocalDate.of(2018, 9, 02), "Em uso", "Jose"));
+				computadorDAO.add(new Computador("2", "999854", LocalDate.of(2018, 9, 02), "Em uso", "Carlos"));
+				computadorDAO.add(new Computador("3", "999854", LocalDate.of(2018, 9, 02), "Em uso", "Jaqueline"));
+				computadorDAO.add(new Computador("4", "999854", LocalDate.of(2018, 9, 02), "Em uso", "Tamara"));
 
-				nfDAO.add(novaNF);
+				List<Computador> computadores;
 
-				break;
-			case 3:
-				// Atualiza nota
-				System.out.println("Informe o numero da Nota Fiscal: ");
-				numNF = br.readLine();
-				System.out.println("Informe o valor unitario dos itens: ");
-				valorUnit = Double.parseDouble(br.readLine());
-				System.out.println("Informe a quantidade de itens: ");
-				quantidade = Integer.parseInt(br.readLine());
-				System.out.println("Informe a data de Emissao da NF (AAAA-MM-DD)");
-				dataEmissaoNF = LocalDate.parse(br.readLine());
-				System.out.println("Informe a descricao: ");
-				descricao = br.readLine();
-				novaNF = new NotaFiscal(numNF, valorUnit, quantidade, dataEmissaoNF, descricao);
+				int opcao2 = 9;
+				br = new BufferedReader(new InputStreamReader(System.in));
 
-				nfDAO.update(novaNF);
+				System.out.println("Cadastro de Computadores");
+				System.out.println("Selecione uma opcao:");
+				System.out.println("1-Buscar um Computador");
+				System.out.println("2-Cadastrar um Computador");
+				System.out.println("3-Atualizar um Computador");
+				System.out.println("4-Remover um Computador");
+				System.out.println("5-Listar Computadores");
+				System.out.println("0-SAIR");
 
-				break;
-			case 4:
-				// Remove nota
-				System.out.println("Informe o numero da Nota Fiscal: ");
-				numNF = br.readLine();
-				System.out.println("Informe o valor unitario dos itens: ");
-				valorUnit = Double.parseDouble(br.readLine());
-				System.out.println("Informe a quantidade de itens: ");
-				quantidade = Integer.parseInt(br.readLine());
-				System.out.println("Informe a data de Emissao da NF (AAAA-MM-DD)");
-				dataEmissaoNF = LocalDate.parse(br.readLine());
-				System.out.println("Informe a descricao: ");
-				descricao = br.readLine();
-				novaNF = new NotaFiscal(numNF, valorUnit, quantidade, dataEmissaoNF, descricao);
+				opcao2 = Integer.parseInt(br.readLine());
+				while (opcao2 != 0) {
+					switch (opcao2) {
 
-				nfDAO.delete(novaNF);
+					case 1:
+						System.out.println("Informe a ID do computador: ");
+						String idComputadorSTR = br.readLine().toString();
+						System.out.println(computadorDAO.get(idComputadorSTR));
+						break;
+					case 2:
+						System.out.println("Informe a ID do computador: ");
+						String idComputador = br.readLine();
+						System.out.println("Informe o numero da nota fiscal: ");
+						String numNF = br.readLine();
+						System.out.println("Informe a data de fornecimento do computador (AAAA-MM-DD): ");
+						LocalDate dataFornecimento = LocalDate.parse(br.readLine());
+						System.out.println("Informe o status do computador: ");
+						String status = br.readLine();
+						System.out.println("Informe o usuario designado: ");
+						String usuarioDesignado = br.readLine();
+						Computador novoComputador = new Computador(idComputador, numNF, dataFornecimento, status,
+								usuarioDesignado);
 
-				break;
-			case 5:
-				// Buscar lista de notas
-				// Receber Notas Fiscais do txt e exibir como String:
-				notasFiscais = nfDAO.getAll();
-				for (NotaFiscal nf : notasFiscais) {
-					System.out.println(nf);
+						computadorDAO.add(novoComputador);
+
+						break;
+					case 3:
+						System.out.println("Informe a ID do computador: ");
+						idComputador = br.readLine();
+						System.out.println("Informe o numero da nota fiscal: ");
+						numNF = br.readLine();
+						System.out.println("Informe a data de fornecimento do computador (AAAA-MM-DD): ");
+						dataFornecimento = LocalDate.parse(br.readLine());
+						System.out.println("Informe o status do computador: ");
+						status = br.readLine();
+						System.out.println("Informe o usuario designado: ");
+						usuarioDesignado = br.readLine();
+						novoComputador = new Computador(idComputador, numNF, dataFornecimento, status,
+								usuarioDesignado);
+
+						computadorDAO.update(novoComputador);
+
+						break;
+					case 4:
+						System.out.println("Informe a ID do computador: ");
+						idComputador = br.readLine();
+						System.out.println("Informe o numero da nota fiscal: ");
+						numNF = br.readLine();
+						System.out.println("Informe a data de fornecimento do computador (AAAA-MM-DD): ");
+						dataFornecimento = LocalDate.parse(br.readLine());
+						System.out.println("Informe o status do computador: ");
+						status = br.readLine();
+						System.out.println("Informe o usuario designado: ");
+						usuarioDesignado = br.readLine();
+						novoComputador = new Computador(idComputador, numNF, dataFornecimento, status,
+								usuarioDesignado);
+
+						computadorDAO.delete(novoComputador);
+
+						break;
+					case 5:
+						computadores = computadorDAO.getAll();
+						for (Computador computador : computadores) {
+							System.out.println(computador);
+						}
+						break;
+					default:
+						System.out.println("Opcao invalida");
+						break;
+					}
+
+					System.out.println("Cadastro de Computadores");
+					System.out.println("Selecione uma opcao:");
+					System.out.println("1-Buscar um Computador");
+					System.out.println("2-Cadastrar um Computador");
+					System.out.println("3-Atualizar um Computador");
+					System.out.println("4-Remover um Computador");
+					System.out.println("5-Listar Computadores");
+					System.out.println("0-SAIR");
+
+					opcao2 = Integer.parseInt(br.readLine());
 				}
 				break;
 			default:
 				System.out.println("Opcao invalida");
 				break;
+
 			}
-
-			System.out.println("Cadastro de Notas Fiscais");
-			System.out.println("Selecione uma opcao:");
-			System.out.println("1-Buscar uma Nota Fiscal");
-			System.out.println("2-Cadastrar uma Nota Fiscal");
-			System.out.println("3-Atualizar uma Nota Fiscal");
-			System.out.println("4-Remover uma Nota Fiscal");
-			System.out.println("5-Listar Notas Fiscais");
-			System.out.println("0-SAIR");
-
-			opcao = Integer.parseInt(br.readLine());
-
 		}
 		System.out.println("Tecle ENTER para interromper o servidor...");
 		System.in.read();

@@ -54,7 +54,7 @@ public final class Service {
 		Query query = request.getQuery();
 		System.out.println("Query" + query);
 
-		int id = query.getInteger("id");
+		String id = query.get("id");
 		String nf = query.get("nf");
 		String status = query.get("status");
 		LocalDate dataFornecimento = LocalDate.parse(query.get("dataFornecimento"), formatter);
