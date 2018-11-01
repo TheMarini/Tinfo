@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Models.NotaFiscal;
-import java.io.PrintStream;
 
 public class NotaFiscalDAO implements DAO<NotaFiscal, String> {
 	public NotaFiscalDAO() {
@@ -17,29 +16,10 @@ public class NotaFiscalDAO implements DAO<NotaFiscal, String> {
 	}
 
 	@Override
-	public void add(NotaFiscal nf) {
-		NotaFiscal b = nf;
-		try (BufferedWriter buffer_saida = new BufferedWriter(new FileWriter("notasfiscais.txt", true))) {
-			String separadorDeLinha = System.getProperty("line.separator");
-			buffer_saida.write(b.getNfID() + separadorDeLinha);
-			buffer_saida.write(b.getValorUnit() + separadorDeLinha);
-			buffer_saida.write(b.getQuantidade() + separadorDeLinha);
-			buffer_saida.write(b.getDataEmissaoNF() + separadorDeLinha);
-			buffer_saida.write(b.getDescricao() + separadorDeLinha);
-			buffer_saida.flush();
-
-		} catch (Exception e) {
-			System.out.println("ERRO ao gravar a Nota Fiscal '" + b.getNfID() + "' no disco!");
-			e.printStackTrace();
-		}
-	}
-
-	@Override
 	public NotaFiscal get(String chave) {
 		NotaFiscal retorno = null;
 		NotaFiscal nf = null;
-		
-		
+
 		try (BufferedReader buffer_entrada = new BufferedReader(new FileReader("notasfiscais.txt"))) {
 			String idSTR;
 
@@ -64,26 +44,21 @@ public class NotaFiscalDAO implements DAO<NotaFiscal, String> {
 	}
 
 	@Override
-	public List<NotaFiscal> getAll() {
-		List<NotaFiscal> notasFiscais = new ArrayList<NotaFiscal>();
-		NotaFiscal nf = null;
-		try (BufferedReader buffer_entrada = new BufferedReader(new FileReader("notasfiscais.txt"))) {
-			String idSTR;
+	public void add(NotaFiscal nf) {
+		NotaFiscal b = nf;
+		try (BufferedWriter buffer_saida = new BufferedWriter(new FileWriter("notasfiscais.txt", true))) {
+			String separadorDeLinha = System.getProperty("line.separator");
+			buffer_saida.write(b.getNfID() + separadorDeLinha);
+			buffer_saida.write(b.getValorUnit() + separadorDeLinha);
+			buffer_saida.write(b.getQuantidade() + separadorDeLinha);
+			buffer_saida.write(b.getDataEmissaoNF() + separadorDeLinha);
+			buffer_saida.write(b.getDescricao() + separadorDeLinha);
+			buffer_saida.flush();
 
-			while ((idSTR = buffer_entrada.readLine()) != null) {
-				nf = new NotaFiscal();
-				nf.setNfID(idSTR);
-				nf.setValorUnit(Double.parseDouble(buffer_entrada.readLine()));
-				nf.setQuantidade(Integer.parseInt(buffer_entrada.readLine()));
-				nf.setDataEmissaoNF(LocalDate.parse(buffer_entrada.readLine()));
-				nf.setDescricao(buffer_entrada.readLine());
-				notasFiscais.add(nf);
-			}
 		} catch (Exception e) {
-			System.out.println("ERRO ao ler as Notas Fiscais do disco rígido!");
+			System.out.println("ERRO ao gravar a Nota Fiscal '" + b.getNfID() + "' no disco!");
 			e.printStackTrace();
 		}
-		return notasFiscais;
 	}
 
 	@Override
@@ -104,6 +79,29 @@ public class NotaFiscalDAO implements DAO<NotaFiscal, String> {
 			notasFiscais.remove(index);
 		}
 		saveToFile(notasFiscais);
+	}
+
+	@Override
+	public List<NotaFiscal> getAll() {
+		List<NotaFiscal> notasFiscais = new ArrayList<NotaFiscal>();
+		NotaFiscal nf = null;
+		try (BufferedReader buffer_entrada = new BufferedReader(new FileReader("notasfiscais.txt"))) {
+			String idSTR;
+
+			while ((idSTR = buffer_entrada.readLine()) != null) {
+				nf = new NotaFiscal();
+				nf.setNfID(idSTR);
+				nf.setValorUnit(Double.parseDouble(buffer_entrada.readLine()));
+				nf.setQuantidade(Integer.parseInt(buffer_entrada.readLine()));
+				nf.setDataEmissaoNF(LocalDate.parse(buffer_entrada.readLine()));
+				nf.setDescricao(buffer_entrada.readLine());
+				notasFiscais.add(nf);
+			}
+		} catch (Exception e) {
+			System.out.println("ERRO ao ler as Notas Fiscais do disco rígido!");
+			e.printStackTrace();
+		}
+		return notasFiscais;
 	}
 
 	private void saveToFile(List<NotaFiscal> notasFiscais) {
