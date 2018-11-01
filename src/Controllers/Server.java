@@ -57,7 +57,7 @@ public class Server implements Container {
 
 	private void naoEncontrado(Response response, String path) throws Exception {
 		JSONObject error = new JSONObject();
-		error.put("error", "Não encontrado.");
+		error.put("error", "Nï¿½o encontrado.");
 		error.put("path", path);
 		enviaResposta(Status.NOT_FOUND, response, error.toString());
 	}
@@ -108,6 +108,7 @@ public class Server implements Container {
 		notasFiscais.add(notaFiscal1);
 
 		NotaFiscalDAO nfDAO = new NotaFiscalDAO();
+		nfDAO.add(notaFiscal1);
 
 		notasFiscais = nfDAO.getAll();
 
@@ -116,7 +117,7 @@ public class Server implements Container {
 		}
 
 		System.out.println(
-				"Tecle ENTER para interromper o servidor...\nAbra o html da página no navegador para verificar o funcionamento do servidor ");
+				"Tecle ENTER para interromper o servidor...\nAbra o html da pï¿½gina no navegador para verificar o funcionamento do servidor ");
 		System.in.read();
 
 		conexao.close();

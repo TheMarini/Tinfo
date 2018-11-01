@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Models.NotaFiscal;
+import java.io.PrintStream;
 
 public class NotaFiscalDAO implements DAO<NotaFiscal, String> {
 	public NotaFiscalDAO() {
@@ -55,7 +56,7 @@ public class NotaFiscalDAO implements DAO<NotaFiscal, String> {
 				}
 			}
 		} catch (Exception e) {
-			System.out.println("ERRO ao ler a Nota Fiscal '" + nf.getDescricao() + "' do disco rígido!");
+			System.out.println("ERRO ao ler a Nota Fiscal '" + nf.getDescricao() + "' do disco rï¿½gido!");
 			e.printStackTrace();
 		}
 		return retorno;
@@ -78,7 +79,7 @@ public class NotaFiscalDAO implements DAO<NotaFiscal, String> {
 				notasFiscais.add(nf);
 			}
 		} catch (Exception e) {
-			System.out.println("ERRO ao ler as Notas Fiscais do disco rígido!");
+			System.out.println("ERRO ao ler as Notas Fiscais do disco rï¿½gido!");
 			e.printStackTrace();
 		}
 		return notasFiscais;
