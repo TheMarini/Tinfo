@@ -9,7 +9,7 @@ public interface DAO<T, K> {
 
 	public void update(T p);
 
-	public void delete(T p);
+	public void delete(K chave);
 
 	public List<T> getAll();
 

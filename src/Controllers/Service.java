@@ -54,6 +54,7 @@ public final class Service {
 		Query query = request.getQuery();
 		System.out.println("Query" + query);
 
+		int id = query.getInteger("id");
 		String nf = query.get("nf");
 		String status = query.get("status");
 		LocalDate dataFornecimento = LocalDate.parse(query.get("dataFornecimento"), formatter);
@@ -63,7 +64,7 @@ public final class Service {
 		switch (tipo) {
 		case 0:
 
-			ic = new Computador(nf, dataFornecimento, status, usuarioDesignado);
+			ic = new Computador(id, nf, dataFornecimento, status, usuarioDesignado);
 
 			break;
 		case 1:
