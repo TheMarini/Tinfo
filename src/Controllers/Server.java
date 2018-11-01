@@ -91,7 +91,7 @@ public class Server implements Container {
 		listaNF = new Service();
 		listaIC = new Service();
 
-		int porta = 881;
+		int porta = 3000;
 
 		Container container = new Server();
 		ContainerSocketProcessor servidor = new ContainerSocketProcessor(container);
