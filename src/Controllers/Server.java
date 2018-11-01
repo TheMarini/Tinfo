@@ -58,7 +58,7 @@ public class Server implements Container {
 
 	private void naoEncontrado(Response response, String path) throws Exception {
 		JSONObject error = new JSONObject();
-		error.put("error", "Não encontrado.");
+		error.put("error", "Nï¿½o encontrado.");
 		error.put("path", path);
 		enviaResposta(Status.NOT_FOUND, response, error.toString());
 	}
@@ -92,7 +92,7 @@ public class Server implements Container {
 		listaNF = new Service();
 		listaIC = new Service();
 
-		int porta = 881;
+		int porta = 3000;
 
 		Container container = new Server();
 		ContainerSocketProcessor servidor = new ContainerSocketProcessor(container);
@@ -100,10 +100,18 @@ public class Server implements Container {
 		SocketAddress endereco = new InetSocketAddress(porta);
 		conexao.connect(endereco);
 
+<<<<<<< HEAD
 		NotaFiscal nf1 = new NotaFiscal("1", 10.01, 5, LocalDate.of(2018, 9, 02), "computador");
 		NotaFiscal nf2 = new NotaFiscal("2", 10.02, 5, LocalDate.of(2018, 9, 02), "computador");
 		NotaFiscal nf3 = new NotaFiscal("3", 10.03, 5, LocalDate.of(2018, 9, 02), "computador");
 		NotaFiscal nf4 = new NotaFiscal("4", 10.04, 5, LocalDate.of(2018, 9, 02), "computador");
+=======
+		File f = new File("notasfiscais.txt");
+		if (f.exists())
+			f.delete();
+
+		NotaFiscal notaFiscal1 = new NotaFiscal("1550", 10.01, 5, LocalDate.of(2018, 9, 02), "computador");
+>>>>>>> branch 'TrabalhoDAO' of https://github.com/TheMarini/Tinfo.git
 
 		List<NotaFiscal> notasFiscais = new ArrayList<NotaFiscal>();
 		NotaFiscalDAO nfDAO = new NotaFiscalDAO();
@@ -213,7 +221,13 @@ public class Server implements Container {
 			opcao = Integer.parseInt(br.readLine());
 
 		}
+<<<<<<< HEAD
 		System.out.println("Tecle ENTER para interromper o servidor...");
+=======
+
+		System.out.println(
+				"Tecle ENTER para interromper o servidor...\nAbra o html da pï¿½gina no navegador para verificar o funcionamento do servidor ");
+>>>>>>> branch 'TrabalhoDAO' of https://github.com/TheMarini/Tinfo.git
 		System.in.read();
 
 		conexao.close();

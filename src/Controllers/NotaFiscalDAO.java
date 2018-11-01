@@ -37,7 +37,7 @@ public class NotaFiscalDAO implements DAO<NotaFiscal, String> {
 				}
 			}
 		} catch (Exception e) {
-			System.out.println("ERRO ao ler a Nota Fiscal '" + nf.getDescricao() + "' do disco rígido!");
+			System.out.println("ERRO ao ler a Nota Fiscal '" + nf.getDescricao() + "' do disco rï¿½gido!");
 			e.printStackTrace();
 		}
 		return retorno;
@@ -56,7 +56,11 @@ public class NotaFiscalDAO implements DAO<NotaFiscal, String> {
 			buffer_saida.flush();
 
 		} catch (Exception e) {
+<<<<<<< HEAD
 			System.out.println("ERRO ao gravar a Nota Fiscal '" + b.getNfID() + "' no disco!");
+=======
+			System.out.println("ERRO ao ler as Notas Fiscais do disco rï¿½gido!");
+>>>>>>> branch 'TrabalhoDAO' of https://github.com/TheMarini/Tinfo.git
 			e.printStackTrace();
 		}
 	}

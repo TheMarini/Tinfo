@@ -26,31 +26,40 @@
   </header>
 
   <main>
-    <form action="http://127.0.0.1:881/adicionarIC" method="post">
-      <input class="form-control col-md-4" type="text" placeholder="Informe o número da Nota Fiscal" name="nf">
-      <label for="dataFornecimento">Data de fornecimento</label>
-      <input id="dataFornecimento" class=" form-control col-md-4" type="date" placeholder="Data de fornecimento do item"
-        name="dataFornecimento">
-      <select class="form-control col-md-4" style="color: dimgray" name="tipo">
-        <option selected>Selecione o tipo do IC</option>
-        <option value="0">Computador</option>
-        <option value="1">Hardware</option>
-        <option value="2">Serviço</option>
-        <option value="3">Software</option>
-      </select>
+    <form action="http://127.0.0.1:3000/adicionarIC" method="post">
+      <div class="form-group">
+        <input class="form-control" type="text" placeholder="Informe o número da Nota Fiscal" name="nf">
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="lblDataEmissaoNF">Data de emissão</span>
+            </div>
+            <input id="dataEmissaoNF" class=" form-control" type="date" placeholder="Data de emissão da nota" name="dataEmissaoNF" aria-describedby="lblDataEmissaoNF">
+          </div>
+        </div>
+        <div class="form-group col-md-4">
+          <select id="inputState" class="form-control" style="color: dimgray" name="status">
+            <option selected>Selecione o status do IC</option>
+            <option value="Em Estoque">Em estoque</option>
+            <option value="Em Analise">Em análise</option>
+            <option value="Em Procucao">Em produção</option>
+            <option value="Em Manutencao">Em manutenção</option>
+          </select>
+        </div>
+        <div class="form-group col-md-4">
+          <input class="form-control" type="text" placeholder="Responsável designado" name="usuarioDesignado">
+        </div>
+      </div>
+
       <!--<input class="form-control col-md-4" type="text" placeholder="Número de série">
       <input class="form-control col-md-4" type="text" placeholder="Fabricante">
       <input class="form-control col-md-4" type="text" placeholder="Modelo">-->
-      <select id="inputState" class="form-control col-md-4" style="color: dimgray" name="status">
-        <option selected>Selecione o status do IC</option>
-        <option value="Em Estoque">Em estoque</option>
-        <option value="Em Analise">Em análise</option>
-        <option value="Em Procucao">Em produção</option>
-        <option value="Em Manutencao">Em manutenção</option>
-      </select>
-      <input class="form-control col-md-4" type="text" placeholder="Usuário designado" name="usuarioDesignado">
+
       <!--onclick="event.preventDefault()"-->
-      <button type="submit" class="btn btn-primary btn-block btn-lg">Cadastrar Item</button>
+      <button type="submit" class="btn btn-primary btn-block btn-lg">Cadastrar IC</button>
     </form>
   </main>
 
