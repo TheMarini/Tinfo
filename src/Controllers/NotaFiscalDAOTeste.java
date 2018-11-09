@@ -1,10 +1,11 @@
 package Controllers;
 
+import static org.junit.Assert.assertEquals;
+
 import java.io.File;
 import java.time.LocalDate;
 import java.util.List;
 
-import static org.junit.Assert.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

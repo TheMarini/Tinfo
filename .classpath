@@ -8,5 +8,6 @@
 	<classpathentry kind="lib" path="D:/Desenvolvimento/4.Semestres/TIS_2/Tinfo/libs/simple-http-6.0.1.jar"/>
 	<classpathentry kind="lib" path="D:/Desenvolvimento/4.Semestres/TIS_2/Tinfo/libs/simple-transport-6.0.1.jar"/>
 	<classpathentry kind="lib" path="D:/Desenvolvimento/4.Semestres/TIS_2/Tinfo/libs/simple-xml-2.7.1.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
