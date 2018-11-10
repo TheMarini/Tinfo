@@ -16,7 +16,6 @@ import org.simpleframework.transport.connect.SocketConnection;
 
 public class Server implements Container {
 
-	static Service listaNF;
 	static Service listaIC;
 
 	public void handle(Request request, Response response) {
@@ -26,21 +25,9 @@ public class Server implements Container {
 			String method = request.getMethod();
 			String mensagem;
 
-			if (path.startsWith("/adicionarNota") && "POST".equals(method)) {
-				mensagem = listaNF.adicionarNF(request);
-				this.enviaResposta(Status.CREATED, response, mensagem);
-
-			} else if (path.startsWith("/adicionarIC") && "POST".equals(method)) {
+			if (path.startsWith("/adicionarIC") && "POST".equals(method)) {
 				mensagem = listaIC.adicionarIC(request);
 				this.enviaResposta(Status.CREATED, response, mensagem);
-
-			} else if (path.startsWith("/consultarNotas") && "GET".equals(method)) {
-				mensagem = listaNF.consultarNF(request);
-				this.enviaResposta(Status.OK, response, mensagem);
-
-			} else if (path.startsWith("/removerNota") && "GET".equals(method)) {
-				mensagem = listaNF.remover(request);
-				this.enviaResposta(Status.OK, response, mensagem);
 			} else {
 				this.naoEncontrado(response, path);
 			}
@@ -51,7 +38,7 @@ public class Server implements Container {
 
 	private void naoEncontrado(Response response, String path) throws Exception {
 		JSONObject error = new JSONObject();
-		error.put("error", "N„o encontrado.");
+		error.put("error", "N√£o encontrado.");
 		error.put("path", path);
 		enviaResposta(Status.NOT_FOUND, response, error.toString());
 	}
@@ -63,7 +50,7 @@ public class Server implements Container {
 
 		response.setValue("Content-Type", "application/json");
 		response.setValue("Server", "Tinfo - Controle de Ativos de TI (1.0)");
-//		response.setValue("Access-Control-Allow-Origin", "null");
+		response.setValue("Access-Control-Allow-Origin", "null");
 		response.setDate("Date", time);
 		response.setDate("Last-Modified", time);
 		response.setStatus(status);
@@ -82,10 +69,9 @@ public class Server implements Container {
 
 	public static void main(String args[]) throws Exception {
 
-		listaNF = new Service();
 		listaIC = new Service();
 
-		int porta = 881;
+		int porta = 3000;
 
 		Container container = new Server();
 		ContainerSocketProcessor servidor = new ContainerSocketProcessor(container);
@@ -93,7 +79,7 @@ public class Server implements Container {
 		SocketAddress endereco = new InetSocketAddress(porta);
 		conexao.connect(endereco);
 		System.out.println(
-				"Tecle ENTER para interromper o servidor...\nAbra o html da p·gina no navegador para verificar o funcionamento do servidor ");
+				"Tecle ENTER para interromper o servidor...\nAbra o html da p√°gina no navegador para verificar o funcionamento do servidor ");
 		System.in.read();
 
 		conexao.close();

@@ -8,5 +8,11 @@
 	<classpathentry kind="lib" path="C:/Program Files/Java/simple-http-6.0.1.jar"/>
 	<classpathentry kind="lib" path="C:/Program Files/Java/simple-transport-6.0.1.jar"/>
 	<classpathentry kind="lib" path="C:/Program Files/Java/simple-xml-2.7.1.jar"/>
+	<classpathentry kind="lib" path="D:/Desenvolvimento/4.Semestres/TIS_2/Tinfo/libs/gson-2.8.0.jar"/>
+	<classpathentry kind="lib" path="D:/Desenvolvimento/4.Semestres/TIS_2/Tinfo/libs/json-20160810.jar"/>
+	<classpathentry kind="lib" path="D:/Desenvolvimento/4.Semestres/TIS_2/Tinfo/libs/simple-common-6.0.1.jar"/>
+	<classpathentry kind="lib" path="D:/Desenvolvimento/4.Semestres/TIS_2/Tinfo/libs/simple-http-6.0.1.jar"/>
+	<classpathentry kind="lib" path="D:/Desenvolvimento/4.Semestres/TIS_2/Tinfo/libs/simple-transport-6.0.1.jar"/>
+	<classpathentry kind="lib" path="D:/Desenvolvimento/4.Semestres/TIS_2/Tinfo/libs/simple-xml-2.7.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

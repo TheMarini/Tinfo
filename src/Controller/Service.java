@@ -17,34 +17,10 @@ import Models.Software;
 
 public final class Service {
 	DateTimeFormatter formatter = DateTimeFormatter.ISO_DATE;
-	private NotasFiscais listaNF;
 	private Inventario listaIC;
 
 	public Service() {
-		listaNF = new NotasFiscais();
 		listaIC = new Inventario();
-	}
-
-	public String adicionarNF(Request request) {
-		NotaFiscal nf = null;
-
-		Query query = request.getQuery();
-		System.out.println("Query" + query);
-
-		String nfID = query.get("id");
-		double valorUnit = query.getFloat("valorUnit");
-		int quantidade = query.getInteger("quantidade");
-		LocalDate dataEmissaoNF = LocalDate.parse(query.get("dataEmissaoNF"), formatter);
-		String descricao = query.get("descricao");
-
-		nf = new NotaFiscal(nfID, valorUnit, quantidade, dataEmissaoNF, descricao);
-
-		if (nf != null) {
-			listaNF.adicionar(nf);
-		}
-
-		return nf.toString();
-
 	}
 
 	public String adicionarIC(Request request) {
@@ -82,31 +58,6 @@ public final class Service {
 		}
 
 		return ic.toString();
-
-	}
-
-	public String consultarNF(Request request) throws Exception {
-
-		Query query = request.getQuery();
-
-		NotaFiscal nf = null;
-		int id = query.getInteger("id");
-		nf = listaNF.consultar(id);
-
-		return nf.toString();
-
-	}
-
-	public String remover(Request request) {
-		int num = listaNF.getNumNFs();
-		Query query = request.getQuery();
-		String descricao = query.get("descricao");
-		listaNF.remover(descricao);
-
-		if (num < listaNF.getNumNFs())
-			return "Removido";
-		else
-			return null;
 
 	}
 

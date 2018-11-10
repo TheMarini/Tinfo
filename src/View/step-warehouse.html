@@ -26,16 +26,10 @@
   </header>
 
   <main>
-    <form action="http://127.0.0.1:881/adicionarNota" method="post">
-
-      <select class="form-control col-md-4" style="color: dimgray" name="tipo">
-        <option selected>Selecione o tipo do Ativo</option>
-        <option value="0">Computador</option>
-        <option value="1">Hardware</option>
-        <option value="2">Serviço</option>
-        <option value="3">Software</option>
-      </select>
-      <input class="form-control col-md-4" type="text" placeholder="Número da nota" name="id">
+    <form action="http://127.0.0.1:3000/adicionarNota" method="post">
+      <div class="form-group">
+        <input class="form-control" type="text" placeholder="Informe o número da Nota Fiscal" name="id">
+      </div>
 
       <div class="form-row">
         <div class="form-group col-md-4">
@@ -43,21 +37,26 @@
             <div class="input-group-prepend">
               <span class="input-group-text" id="basic-addon1">R$</span>
             </div>
-            <input class="form-control" type="number" placeholder="Valor unitário do produto" aria-describedby="basic-addon1"
+            <input class="form-control" type="number" placeholder="Valor unitário do IC" aria-describedby="basic-addon1"
               name="valorUnit">
           </div>
         </div>
         <div class="form-group col-md-4">
-          <input class="form-control" type="number" placeholder="Quantidade" name="quantidade">
+          <input class="form-control" type="number" placeholder="Quantidade" name="quantidade" min="1">
         </div>
         <div class="form-group col-md-4">
-          <input class="form-control" type="date" placeholder="Data de emissão da nota" name="dataEmissaoNF">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="lblDataEmissaoNF">Data de emissão</span>
+            </div>
+            <input id="dataEmissaoNF" class=" form-control" type="date" placeholder="Data de emissão da nota" name="dataEmissaoNF" aria-describedby="lblDataEmissaoNF">
+          </div>
         </div>
       </div>
       <div class="form-group">
-        <input class="form-control" rows="8" cols="80" placeholder="Descrição do produto..." name="descricao"></input>
+        <input class="form-control" rows="8" cols="80" placeholder="Descrição do IC..." name="descricao"></input>
       </div>
-      <button type="submit" class="btn btn-primary btn-block btn-lg">Cadastrar</button>
+      <button type="submit" class="btn btn-primary btn-block btn-lg">Cadastrar IC</button>
     </form>
   </main>
 
