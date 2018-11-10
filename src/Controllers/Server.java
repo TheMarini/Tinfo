@@ -38,7 +38,7 @@ public class Server implements Container {
 
 	private void naoEncontrado(Response response, String path) throws Exception {
 		JSONObject error = new JSONObject();
-		error.put("error", "Não encontrado.");
+		error.put("error", "Nao encontrado.");
 		error.put("path", path);
 		enviaResposta(Status.NOT_FOUND, response, error.toString());
 	}
