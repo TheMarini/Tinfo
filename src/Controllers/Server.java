@@ -26,7 +26,7 @@ public class Server implements Container {
 			String mensagem;
 
 			if (path.startsWith("/adicionarIC") && "POST".equals(method)) {
-				mensagem = listaIC.adicionarIC(request);
+				mensagem = listaIC.addIC(request);
 				this.enviaResposta(Status.CREATED, response, mensagem);
 			} else {
 				this.naoEncontrado(response, path);
@@ -78,8 +78,8 @@ public class Server implements Container {
 		Connection conexao = new SocketConnection(servidor);
 		SocketAddress endereco = new InetSocketAddress(porta);
 		conexao.connect(endereco);
-		System.out.println(
-				"Tecle ENTER para interromper o servidor...\nAbra o html da página no navegador para verificar o funcionamento do servidor ");
+		System.out.println("Tecle ENTER para interromper o servidor...");
+		System.out.println("Abra o html da pagina no navegador para verificar o funcionamento do servidor ");
 		System.in.read();
 
 		conexao.close();

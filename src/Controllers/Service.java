@@ -14,35 +14,13 @@ import Models.Software;
 
 public final class Service {
 	DateTimeFormatter formatter = DateTimeFormatter.ISO_DATE;
-	private IC ativos;
+	private ComputadorDAO computadorDAO;
 
 	public Service() {
-		ativos = new Ativos();
+		computadorDAO = new ComputadorDAO();
 	}
 
-	public String adicionarNF(Request request) {
-		NotaFiscal nf = null;
-
-		Query query = request.getQuery();
-		System.out.println("Query" + query);
-
-		String nfID = query.get("id");
-		double valorUnit = query.getFloat("valorUnit");
-		int quantidade = query.getInteger("quantidade");
-		LocalDate dataEmissaoNF = LocalDate.parse(query.get("dataEmissaoNF"), formatter);
-		String descricao = query.get("descricao");
-
-		nf = new NotaFiscal(nfID, valorUnit, quantidade, dataEmissaoNF, descricao);
-
-		if (nf != null) {
-			listaNF.adicionar(nf);
-		}
-
-		return nf.toString();
-
-	}
-
-	public String adicionarIC(Request request) {
+	public String addIC(Request request) {
 
 		IC ic = null;
 
@@ -57,24 +35,18 @@ public final class Service {
 		int tipo = query.getInteger("tipo");
 
 		switch (tipo) {
-		case 0:
+		case 1:
 
 			ic = new Computador(id, nf, dataFornecimento, status, usuarioDesignado);
 
 			break;
-		case 1:
-			ic = new Hardware(id, nf, dataFornecimento, status, usuarioDesignado);
-			break;
 		case 2:
-			ic = new Servico(id, nf, dataFornecimento, status, usuarioDesignado);
-			break;
-		case 3:
 			ic = new Software(id, nf, dataFornecimento, status, usuarioDesignado);
 			break;
 		}
 
 		if (ic != null) {
-			ativos.adicionar(ic);
+			computadorDAO.adicionar(ic);
 		}
 
 		return ic.toString();
