@@ -27,26 +27,30 @@ public final class Service {
 		Query query = request.getQuery();
 		System.out.println("Query" + query);
 
-		String id = query.get("id");
-		String nf = query.get("nf");
-		String status = query.get("status");
-		String dataFornecimento = query.get("dataFornecimento");
-		String usuarioDesignado = query.get("usuarioDesignado");
 		int tipo = query.getInteger("tipo");
+
+		String id = query.get("id");
+		String notaFiscal = query.get("nf");
+		String dataFornecimento = query.get("dataFornecimento");
+		String item = query.get("item");
+		String marca = query.get("marca");
+		String modelo = query.get("modelo");
+		String status = query.get("status");
+		String usuarioDesignado = query.get("usuarioDesignado");
+		String departamento = query.get("departamento");
 
 		switch (tipo) {
 		case 1:
 
-			ic = new Computador(id, nf, dataFornecimento, status, usuarioDesignado);
+			ic = new Computador(id, notaFiscal, dataFornecimento, item, marca, modelo, status, usuarioDesignado,
+					departamento);
 
+			computadorDAO.add((Computador) ic);
 			break;
 		case 2:
-			ic = new Software(id, nf, dataFornecimento, status, usuarioDesignado);
+			// ic = new Software(id, nf, dataFornecimento, status, usuarioDesignado);
+			// softwareDAO.add((Software) ic);
 			break;
-		}
-
-		if (ic != null) {
-			computadorDAO.adicionar(ic);
 		}
 
 		return ic.toString();
