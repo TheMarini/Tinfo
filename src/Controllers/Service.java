@@ -57,15 +57,15 @@ public final class Service {
 
 	}
 
-	public String consultarNF(Request request) throws Exception {
+	public String consultarIC(Request request) throws Exception {
 
 		Query query = request.getQuery();
 
-		NotaFiscal nf = null;
-		int id = query.getInteger("id");
-		nf = listaNF.consultar(id);
+		IC ic = null;
+		String id = query.get("id");
+		ic = computadorDAO.get(id);
 
-		return nf.toString();
+		return ic.toString();
 
 	}
 
