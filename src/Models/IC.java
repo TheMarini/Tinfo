@@ -2,9 +2,8 @@ package Models;
 
 import org.json.JSONObject;
 
-public abstract class IC {
-	private String id, notaFiscal, dataFornecimento, item, 
-	marca, modelo, status, usuarioDesignado, departamento;
+public class IC {
+	private String id, notaFiscal, dataFornecimento, item, marca, modelo, status, usuarioDesignado, departamento;
 	// private DadosHistoricos dadosHistoricos;
 
 	public IC(String id, String notaFiscal, String dataFornecimento, String item, String marca, String modelo,
@@ -36,7 +35,7 @@ public abstract class IC {
 	public JSONObject toJson() {
 		JSONObject obj = new JSONObject();
 		obj.put("id", this.getId());
-		obj.put("nf", this.getNf());
+		obj.put("nf", this.getNotaFiscal());
 		obj.put("dataFornecimento", this.getDataFornecimento());
 		obj.put("status", this.getStatus());
 		obj.put("usuarioDesignado", this.getUsuarioDesignado());

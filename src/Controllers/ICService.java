@@ -1,3 +1,7 @@
+//Referencia
+//Ex48_AJAXJson
+//EstoqueService.java
+
 package Controllers;
 
 import java.time.LocalDate;
@@ -12,11 +16,11 @@ import Models.Hardware;
 import Models.IC;
 import Models.Software;
 
-public final class Service {
+public final class ICService {
 	DateTimeFormatter formatter = DateTimeFormatter.ISO_DATE;
 	private ComputadorDAO computadorDAO;
 
-	public Service() {
+	public ICService() {
 		computadorDAO = new ComputadorDAO();
 	}
 

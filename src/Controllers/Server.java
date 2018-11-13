@@ -1,3 +1,7 @@
+//Referencia
+//Ex48_AJAXJson
+//AjaxJson.java
+
 package Controllers;
 
 import java.io.PrintStream;
@@ -16,7 +20,7 @@ import org.simpleframework.transport.connect.SocketConnection;
 
 public class Server implements Container {
 
-	static Service listaIC;
+	static ICService listaIC;
 
 	public void handle(Request request, Response response) {
 		try {
@@ -69,7 +73,7 @@ public class Server implements Container {
 
 	public static void main(String args[]) throws Exception {
 
-		listaIC = new Service();
+		listaIC = new ICService();
 
 		int porta = 3000;
 
