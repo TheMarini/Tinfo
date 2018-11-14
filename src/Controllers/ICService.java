@@ -15,6 +15,7 @@ import Models.Software;
 public final class ICService {
 	DateTimeFormatter formatter = DateTimeFormatter.ISO_DATE;
 	private ComputadorDAO computadorDAO;
+	private SoftwareDAO softwareDAO;
 	Computador computador = null;
 	Software software = null;
 
@@ -48,7 +49,8 @@ public final class ICService {
 			computadorDAO.add(computador);
 			break;
 		case 2:
-			software = new Software(id, nf, dataFornecimento, status, usuarioDesignado);
+			software = new Software(id, notaFiscal, dataFornecimento, item, marca, modelo, status, usuarioDesignado,
+					departamento);
 			softwareDAO.add(software);
 			break;
 		}
