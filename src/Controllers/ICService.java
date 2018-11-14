@@ -10,19 +10,19 @@ import org.simpleframework.http.Query;
 import org.simpleframework.http.Request;
 
 import Models.Computador;
-import Models.IC;
+import Models.Software;
 
 public final class ICService {
 	DateTimeFormatter formatter = DateTimeFormatter.ISO_DATE;
 	private ComputadorDAO computadorDAO;
+	Computador computador = null;
+	Software software = null;
 
 	public ICService() {
 		computadorDAO = new ComputadorDAO();
 	}
 
 	public String addIC(Request request) {
-
-		IC ic = null;
 
 		Query query = request.getQuery();
 		System.out.println("Query" + query);
@@ -40,20 +40,20 @@ public final class ICService {
 		String departamento = query.get("departamento");
 
 		switch (tipo) {
+		// add OK - falta criar os campos dos outros atributos no HTML
 		case 1:
-
-			ic = new Computador(id, notaFiscal, dataFornecimento, item, marca, modelo, status, usuarioDesignado,
+			computador = new Computador(id, notaFiscal, dataFornecimento, item, marca, modelo, status, usuarioDesignado,
 					departamento);
 
-			computadorDAO.add((Computador) ic);
+			computadorDAO.add(computador);
 			break;
 		case 2:
-			// ic = new Software(id, nf, dataFornecimento, status, usuarioDesignado);
-			// softwareDAO.add((Software) ic);
+			software = new Software(id, nf, dataFornecimento, status, usuarioDesignado);
+			softwareDAO.add(software);
 			break;
 		}
 
-		return ic.toString();
+		return computador.toString();
 
 	}
 
@@ -61,25 +61,19 @@ public final class ICService {
 
 		Query query = request.getQuery();
 
-		IC ic = null;
 		String id = query.get("id");
-		ic = computadorDAO.get(id);
+		computador = computadorDAO.get(id);
 
-		return ic.toString();
-
-	}
-/*
-	public String remover(Request request) {
-		int num = listaNF.getNumNFs();
-		Query query = request.getQuery();
-		String descricao = query.get("descricao");
-		listaNF.remover(descricao);
-
-		if (num < listaNF.getNumNFs())
-			return "Removido";
-		else
-			return null;
+		return computador.toString();
 
 	}
-*/
+	/*
+	 * public String remover(Request request) { int num = listaNF.getNumNFs(); Query
+	 * query = request.getQuery(); String descricao = query.get("descricao");
+	 * listaNF.remover(descricao);
+	 * 
+	 * if (num < listaNF.getNumNFs()) return "Removido"; else return null;
+	 * 
+	 * }
+	 */
 }

@@ -11,4 +11,11 @@ public class Computador extends Hardware {
 		super(id, notaFiscal, dataFornecimento, item, marca, modelo, status, usuarioDesignado, departamento);
 	}
 
+	@Override
+	public String toString() {
+		return "ID: " + this.getId() + " - Nota Fiscal: " + this.getNotaFiscal() + " - Data de fornecimento: "
+				+ this.getDataFornecimento() + " - Status do item: " + this.getStatus() + " - Usuario designado: "
+				+ this.getUsuarioDesignado();
+	}
+
 }

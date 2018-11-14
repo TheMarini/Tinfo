@@ -22,12 +22,6 @@ public abstract class IC {
 	public IC() {
 	}
 
-	@Override
-	public String toString() {
-		return "ID: " + this.id + " - Nota Fiscal: " + this.notaFiscal + " - Data de fornecimento: "
-				+ this.dataFornecimento + " - Status do item: " + this.status + " - Usuario designado: "
-				+ this.usuarioDesignado;
-	}
 
 	/**
 	 * Converte a Nota Fiscal para o formato Json
