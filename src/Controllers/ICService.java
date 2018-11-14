@@ -69,13 +69,18 @@ public final class ICService {
 		return computador.toString();
 
 	}
-	/*
-	 * public String remover(Request request) { int num = listaNF.getNumNFs(); Query
-	 * query = request.getQuery(); String descricao = query.get("descricao");
-	 * listaNF.remover(descricao);
-	 * 
-	 * if (num < listaNF.getNumNFs()) return "Removido"; else return null;
-	 * 
-	 * }
-	 */
+
+	public String removerComputador(Request request) {
+		int num = computadorDAO.getAll().size();
+		Query query = request.getQuery();
+		String descricao = query.get("descricao");
+		listaNF.remover(descricao);
+
+		if (num < listaNF.getNumNFs())
+			return "Removido";
+		else
+			return null;
+
+	}
+
 }
