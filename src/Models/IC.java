@@ -2,7 +2,7 @@ package Models;
 
 import org.json.JSONObject;
 
-public class IC {
+public abstract class IC {
 	private String id, notaFiscal, dataFornecimento, item, marca, modelo, status, usuarioDesignado, departamento;
 	// private DadosHistoricos dadosHistoricos;
 

@@ -4,17 +4,13 @@
 
 package Controllers;
 
-import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 import org.simpleframework.http.Query;
 import org.simpleframework.http.Request;
 
-import Models.Ativos;
 import Models.Computador;
-import Models.Hardware;
 import Models.IC;
-import Models.Software;
 
 public final class ICService {
 	DateTimeFormatter formatter = DateTimeFormatter.ISO_DATE;
@@ -72,7 +68,7 @@ public final class ICService {
 		return ic.toString();
 
 	}
-
+/*
 	public String remover(Request request) {
 		int num = listaNF.getNumNFs();
 		Query query = request.getQuery();
@@ -85,5 +81,5 @@ public final class ICService {
 			return null;
 
 	}
-
+*/
 }

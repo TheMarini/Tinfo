@@ -2,9 +2,9 @@ package Models;
 
 public class Software extends IC {
 
-	public Software(String id, String nf, String dataFornecimento, String status, String usuarioDesignado) {
-		super(id, nf, dataFornecimento, status, usuarioDesignado);
-		// TODO Auto-generated constructor stub
+	public Software(String id, String notaFiscal, String dataFornecimento, String item, String marca, String modelo,
+			String status, String usuarioDesignado, String departamento) {
+		super(id, notaFiscal, dataFornecimento, item, marca, modelo, status, usuarioDesignado, departamento);
 	}
 
 }
