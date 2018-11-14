@@ -1,74 +1,116 @@
 <!DOCTYPE html>
 <html lang="pt-bt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TInfo</title>
 
-  <title>TInfo</title>
+    <!-- TODO: .ico & favicon size -->
+    <link rel="icon" href="assets/img/green-chipset.png" />
 
-  <!-- TODO: .ico & favicon size -->
-  <link rel="icon" href="assets/img/green-chipset.png" />
+    <!-- STYLES -->
+    <link rel="stylesheet" href="assets/css/bootstrap-reboot.min.css" />
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
 
-  <!-- STYLES -->
-  <link rel="stylesheet" href="assets/css/bootstrap-reboot.min.css">
-  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-  <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/step-technical.css" />
+  </head>
 
-  <link rel="stylesheet" href="assets/css/step-technical.css">
-</head>
+  <body class="container py-4">
+    <header class="mb-4">
+      <h1>Cadastro de IC</h1>
+      <h2 class="text-muted">
+        Etapa: <small class="step">Especificação Técnica</small>
+      </h2>
+    </header>
 
-<body class="container py-4">
-  <header class="mb-4">
-    <h1>Cadastro de IC</h1>
-    <h2 class="text-muted">Etapa: <small class="step">Especificação Técnica</small></h2>
-  </header>
+    <main>
+      <form action="http://127.0.0.1:3000/adicionarIC" method="post">
+        <div class="form-group">
+          <input
+            class="form-control"
+            type="text"
+            placeholder="Informe o número da Nota Fiscal"
+            name="nf"
+          />
+        </div>
 
-  <main>
-    <form action="http://127.0.0.1:3000/adicionarIC" method="post">
-      <div class="form-group">
-        <input class="form-control" type="text" placeholder="Informe o número da Nota Fiscal" name="nf">
-      </div>
-
-      <div class="form-row">
-        <div class="form-group col-md-4">
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="lblDataEmissaoNF">Data de emissão</span>
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="lblDataEmissaoNF"
+                  >Data de emissão</span
+                >
+              </div>
+              <input
+                id="dataEmissaoNF"
+                class=" form-control"
+                type="date"
+                placeholder="Data de emissão da nota"
+                name="dataEmissaoNF"
+                aria-describedby="lblDataEmissaoNF"
+              />
             </div>
-            <input id="dataEmissaoNF" class=" form-control" type="date" placeholder="Data de emissão da nota" name="dataEmissaoNF" aria-describedby="lblDataEmissaoNF">
+          </div>
+          <div class="form-group col-md-4">
+            <input
+              class="form-control"
+              type="text"
+              placeholder="Tipo"
+              name="tipo"
+            />
+          </div>
+          <div class="form-group col-md-4">
+            <select
+              id="inputState"
+              class="form-control"
+              style="color: dimgray"
+              name="status"
+            >
+              <option selected>Selecione o status do IC</option>
+              <option value="Em Estoque">Em estoque</option>
+              <option value="Em Analise">Em análise</option>
+              <option value="Em Procucao">Em produção</option>
+              <option value="Em Manutencao">Em manutenção</option>
+            </select>
+          </div>
+          <div class="form-group col-md-4">
+            <input
+              class="form-control"
+              type="text"
+              placeholder="Responsável designado"
+              name="usuarioDesignado"
+            />
           </div>
         </div>
-        <div class="form-group col-md-4">
-          <select id="inputState" class="form-control" style="color: dimgray" name="status">
-            <option selected>Selecione o status do IC</option>
-            <option value="Em Estoque">Em estoque</option>
-            <option value="Em Analise">Em análise</option>
-            <option value="Em Procucao">Em produção</option>
-            <option value="Em Manutencao">Em manutenção</option>
-          </select>
-        </div>
-        <div class="form-group col-md-4">
-          <input class="form-control" type="text" placeholder="Responsável designado" name="usuarioDesignado">
-        </div>
-      </div>
 
-      <!--<input class="form-control col-md-4" type="text" placeholder="Número de série">
-      <input class="form-control col-md-4" type="text" placeholder="Fabricante">
-      <input class="form-control col-md-4" type="text" placeholder="Modelo">-->
+        <!--
+          <input class="form-control col-md-4" type="text" placeholder="Número de série">
+          <input class="form-control col-md-4" type="text" placeholder="Fabricante">
+          <input class="form-control col-md-4" type="text" placeholder="Modelo">
+        -->
 
-      <!--onclick="event.preventDefault()"-->
-      <button type="submit" class="btn btn-primary btn-block btn-lg">Cadastrar IC</button>
-    </form>
-  </main>
+        <!-- onclick="event.preventDefault()" -->
+        <button type="submit" class="btn btn-primary btn-block btn-lg">
+          Cadastrar IC
+        </button>
+      </form>
+    </main>
 
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-    crossorigin="anonymous"></script>
-  <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="assets/js/script.js"></script>
-</body>
-
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+      integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+      crossorigin="anonymous"
+    ></script>
+    <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="assets/js/script.js"></script>
+  </body>
 </html>
